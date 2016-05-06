@@ -10,12 +10,12 @@ var port = process.env.PORT || 3000;
 var server = app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
- app.get('/', function(request, response) {
- response.render('app/index.html');
- });
 
 io = require('socket.io').listen(server);
 
+ app.get('/', function(request, response) {
+ response.render('app/index');
+ });
 io.sockets.on('connection', function(socket){
 
 	socket.once('disconnect', function(){
