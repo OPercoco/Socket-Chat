@@ -1,5 +1,6 @@
 var express= require('express');
 var app = express();
+const path = require('path');
 
 var connections = [];
 var users = [];
@@ -57,3 +58,16 @@ io.sockets.on('connection', function(socket){
 });
 
 console.log('server is running on port 3000')
+
+module.exports = {
+  app: function () {
+    const app = express()
+    const indexPath = path.join(__dirname, 'index.html')
+    const publicPath = express.static(path.join(__dirname, 'public'))
+
+    app.use('/public', publicPath)
+    app.get('/', function (_, res) { res.sendFile(indexPath) })
+
+    return app
+  }
+}
