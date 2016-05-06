@@ -14,7 +14,7 @@ var server = app.listen(process.env.PORT || 3000, function(){
 io = require('socket.io').listen(server);
 
  app.get('/', function(request, response) {
- response.render('app/index');
+ response.render('./app/index');
  });
 io.sockets.on('connection', function(socket){
 
