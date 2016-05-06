@@ -10,7 +10,9 @@ var port = process.env.PORT || 3000;
 var server = app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
-
+ app.get('/', function(request, response) {
+ response.send('Hello World!');
+ });
 
 io = require('socket.io').listen(server);
 
